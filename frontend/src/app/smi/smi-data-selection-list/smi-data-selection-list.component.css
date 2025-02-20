@@ -1,0 +1,14 @@
+form {
+  display: block;
+  margin-left: auto;
+  margin-right: 60px;
+  text-align: right;
+  max-width: 500px;
+}
+
+h3 {
+  display: block;
+  margin-left: auto;
+  text-align: right;
+  max-width: 500px;
+}

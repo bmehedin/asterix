@@ -1,0 +1,36 @@
+<h3>
+  Please select the desired Fields for Asterix Conversion:
+</h3>
+
+<form (ngSubmit)="onSubmit()" #submitFieldsForm="ngForm">
+
+  <div class="checkbox-group">
+    <div *ngFor="let field of asterixFields">
+      <mat-checkbox
+        (change)="toggleField(field, $event.checked)"
+        [ngClass]="{'mandatory-missing': field.isMandatory && !selectedFields.has(field.id)}">
+        {{ field.id + ' - ' + field.name }}
+        <span *ngIf="field.isMandatory && !selectedFields.has(field.id)" class="warning-icon">⚠️ Mandatory Field</span>
+      </mat-checkbox>
+    </div>
+  </div>
+
+  <div class="input-group">
+    <mat-form-field appearance="outline">
+      <mat-label>Number of Flights</mat-label>
+      <input matInput type="number" min="1" required [(ngModel)]="numFlights" name="numFlights">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Number of Positions/Flight</mat-label>
+      <input matInput type="number" min="1" required [(ngModel)]="numPositions" name="numPositions">
+    </mat-form-field>
+  </div>
+
+  <button
+    mat-raised-button
+    type="submit"
+    [disabled]="submitFieldsForm.invalid || selectedFields.size === 0 || numFlights <= 0 || numPositions <= 0 || !checkMandatoryFields()">
+    Submit
+  </button>
+</form>

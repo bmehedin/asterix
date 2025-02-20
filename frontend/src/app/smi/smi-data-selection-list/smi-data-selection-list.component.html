@@ -1,0 +1,40 @@
+<h3>
+  Please select the desired Data for Generating an SMI:
+</h3>
+
+<form class = "smi-data-selection" (ngSubmit)="onSubmit()" #submitFieldsForm="ngForm">
+
+  <div class="input-group">
+    <mat-form-field appearance="outline">
+      <mat-label>Number of Flight Positions</mat-label>
+      <input matInput type="number" min="1" required [(ngModel)]="nbOfPositions" name="nbOfPositions">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Number of Positions Infringing Separation Minima</mat-label>
+      <input matInput type="number" min="1" required [(ngModel)]="nbOfInfringedPositions" name="nbOfInfringedPositions">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Starting X Position (m)</mat-label>
+      <input matInput type="number" required [(ngModel)]="xPosition" name="xPosition">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Starting Y Position (m)</mat-label>
+      <input matInput type="number" required [(ngModel)]="yPosition" name="yPosition">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Starting Altitude (m)</mat-label>
+      <input matInput type="number" min="1000" required [(ngModel)]="altitude" name="altitude">
+    </mat-form-field>
+  </div>
+
+  <button
+    mat-raised-button
+    type="submit"
+    [disabled]="submitFieldsForm.invalid || nbOfPositions <= 0 || nbOfInfringedPositions <= 0">
+    Submit
+  </button>
+</form>
