@@ -13,8 +13,11 @@ public class Constants {
     public static final String BINARY_CATEGORY_STRING = "00111110";
     public static final String BASE_FRN_STRING = "00000001000000010000000100000000";
 //                                                01234567
+    public static final String ASTERIX_DATA_FILE = "./data/cat62.xml";
     public static final String ASTERIX_EXCEL_FILE_PATH = "./data/output/asterix/asterix-data.xlsx";
     public static final String ASTERIX_RAW_FILE_PATH = "./data/output/asterix/asterix-data.raw";
+    public static final String ASTERIX_PATH = "./data/output/asterix";
+    public static final String ASTERIX_ARCHIVE_PATH = "./data/output/asterix-archive.zip";
 
     public static final Set<String> SMI_ASTERIX_IDS = Set.of("I062/010", "I062/040", "I062/060", "I062/070", "I062/080",
             "I062/100", "I062/135", "I062/185");
@@ -25,6 +28,8 @@ public class Constants {
     public static final String SMI_EXCEL_FILE_PATH = "./data/output/smi/smi-data.xlsx";
     public static final String SMI_EXCEL_CONFLICT_FILE_PATH = "./data/output/smi/smi-conflict-data.xlsx";
     public static final String SMI_RAW_FILE_PATH = "./data/output/smi/smi-data.raw";
+    public static final String SMI_PATH = "./data/output/smi";
+    public static final String SMI_ARCHIVE_PATH = "./data/output/smi-archive.zip";
 
     public static final double EARTH_MAJOR_AXIS = 6378137.0;
     public static final double EARTH_MINOR_AXIS = 6356752.314;

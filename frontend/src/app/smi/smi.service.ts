@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,13 @@ export class SmiService {
                      xPosition: number, yPosition: number,
                      altitude: number) {
 
-    const url = `${this.smiUrl}/send-data/${nbOfPositions}/${nbOfInfringedPositions}/${xPosition}/${yPosition}/${altitude}`;
-    return this.http.post<void>(url, {})
+    const url = `${this.smiUrl}/${nbOfPositions}/${nbOfInfringedPositions}/${xPosition}/${yPosition}/${altitude}`;
+
+    return this.http.post(url, {}, {
+      responseType: 'blob',
+      headers: new HttpHeaders({
+        'Accept': 'application/zip'
+      })
+    });
   }
 }

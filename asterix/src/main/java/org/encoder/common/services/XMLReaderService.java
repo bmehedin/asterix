@@ -1,6 +1,7 @@
 package org.encoder.common.services;
 
 import org.encoder.common.AsterixFlightData;
+import org.encoder.common.Constants;
 import org.springframework.stereotype.Service;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -81,7 +82,7 @@ public class XMLReaderService {
     private Document readXml() {
 
         try {
-            File xmlFile = new File("./data/cat62.xml");
+            File xmlFile = new File(Constants.ASTERIX_DATA_FILE);
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(xmlFile);

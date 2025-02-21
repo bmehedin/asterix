@@ -1,5 +1,5 @@
 <h3>
-  Please select the desired Fields for Asterix Conversion:
+  Please select the desired Fields for Asterix Conversion
 </h3>
 
 <form (ngSubmit)="onSubmit()" #submitFieldsForm="ngForm">
@@ -27,10 +27,22 @@
     </mat-form-field>
   </div>
 
-  <button
-    mat-raised-button
-    type="submit"
-    [disabled]="submitFieldsForm.invalid || selectedFields.size === 0 || numFlights <= 0 || numPositions <= 0 || !checkMandatoryFields()">
-    Submit
-  </button>
+  <div *ngIf="isLoading" class="loading-overlay">
+    <mat-spinner color="accent"></mat-spinner>
+    <p>Generating ZIP file, please wait...</p>
+  </div>
+
+  <div class="button-container">
+    <button
+      mat-raised-button
+      type="submit"
+      [disabled]="submitFieldsForm.invalid || selectedFields.size === 0 || numFlights <= 0 || numPositions <= 0 || !checkMandatoryFields()">
+      Submit
+    </button>
+
+    <button *ngIf="zipFileUrl && !isLoading" mat-raised-button color="primary" (click)="downloadZip()">
+      Download ZIP
+    </button>
+  </div>
+
 </form>

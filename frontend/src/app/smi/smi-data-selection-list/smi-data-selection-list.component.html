@@ -1,13 +1,13 @@
 <h3>
-  Please select the desired Data for Generating an SMI:
+  Please select the desired Data for Generating an SMI
 </h3>
 
-<form class = "smi-data-selection" (ngSubmit)="onSubmit()" #submitFieldsForm="ngForm">
+<form class="smi-data-selection" (ngSubmit)="onSubmit()" #submitFieldsForm="ngForm">
 
   <div class="input-group">
     <mat-form-field appearance="outline">
       <mat-label>Number of Flight Positions</mat-label>
-      <input matInput type="number" min="1" required [(ngModel)]="nbOfPositions" name="nbOfPositions">
+      <input matInput type="number" min="10" required [(ngModel)]="nbOfPositions" name="nbOfPositions">
     </mat-form-field>
 
     <mat-form-field appearance="outline">
@@ -26,15 +26,27 @@
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>Starting Altitude (m)</mat-label>
+      <mat-label>Starting Altitude (ft)</mat-label>
       <input matInput type="number" min="1000" required [(ngModel)]="altitude" name="altitude">
     </mat-form-field>
   </div>
 
-  <button
-    mat-raised-button
-    type="submit"
-    [disabled]="submitFieldsForm.invalid || nbOfPositions <= 0 || nbOfInfringedPositions <= 0">
-    Submit
-  </button>
+  <div *ngIf="isLoading" class="loading-overlay">
+    <mat-spinner color="accent"></mat-spinner>
+    <p>Generating ZIP file, please wait...</p>
+  </div>
+
+  <div class="button-container">
+    <button
+      mat-raised-button
+      type="submit"
+      [disabled]="submitFieldsForm.invalid || nbOfPositions <= 0 || nbOfInfringedPositions <= 0">
+      Submit
+    </button>
+
+    <button *ngIf="zipFileUrl && !isLoading" mat-raised-button color="primary" (click)="downloadZip()">
+      Download ZIP
+    </button>
+  </div>
+
 </form>

@@ -260,6 +260,7 @@ public class SmiExcelBuilderService {
             }
 
             workbook.write(fileOut);
+
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }

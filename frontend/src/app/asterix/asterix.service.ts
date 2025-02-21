@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,13 @@ export class AsterixService {
 
   public sendAsterixData(asterixIds: Set<string>, nbOfFlights: number, nbOfPositions: number) {
 
-    const url = `${this.asterixUrl}/send-data/${nbOfFlights}/${nbOfPositions}`;
-    return this.http.post<void>(url, Array.from(asterixIds))
+    const url = `${this.asterixUrl}/${nbOfFlights}/${nbOfPositions}`;
+
+    return this.http.post(url, Array.from(asterixIds), {
+      responseType: 'blob',
+      headers: new HttpHeaders({
+        'Accept': 'application/zip'
+      })
+    });
   }
 }
