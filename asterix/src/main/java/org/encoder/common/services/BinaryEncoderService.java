@@ -1,9 +1,10 @@
 package org.encoder.common.services;
 
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.encoder.asterix.models.AsterixField;
-import org.encoder.asterix.models.AsterixSubfield;
+import org.encoder.common.models.AsterixField;
+import org.encoder.common.models.AsterixSubfield;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -35,11 +36,8 @@ public class BinaryEncoderService {
             Map<String, Integer> columnIndexMap = getColumnIndexMap(sheet.getRow(0));
             if (rowIterator.hasNext()) rowIterator.next();
 
-            List<AsterixField> sortedFields = new ArrayList<>(asterixFlightData.getAsterixFields());
-            sortedFields.sort(Comparator.comparingInt(AsterixField::getFrn));
-
-            List<AsterixSubfield> sortedSubfields = new ArrayList<>(asterixFlightData.getAsterixSubfields());
-            sortedSubfields.sort(Comparator.comparingInt(AsterixSubfield::getFrn));
+            List<AsterixField> sortedFields = sortAsterixFieldsByFrn();
+            List<AsterixSubfield> sortedSubfields = sortAsterixSubfieldsByFrn();
 
             while (rowIterator.hasNext()) {
 
@@ -48,25 +46,14 @@ public class BinaryEncoderService {
                 StringBuilder finalAsterixString = new StringBuilder();
                 finalAsterixString.append(determineMessageHeader());
 
-                for (AsterixField field : sortedFields) {
-
-                    if (field.getFormat().equals("compound")) {
-
-                        finalAsterixString.append(generateSubfieldFspec(field));
-                        appendSubfieldData(finalAsterixString, row, columnIndexMap, sortedSubfields);
-
-                    } else {
-
-                        appendFieldData(finalAsterixString, row, field, columnIndexMap);
-                    }
-                }
+                iterateThroughFields(sortedFields, sortedSubfields, row, columnIndexMap, finalAsterixString);
 
                 byte[] binaryData = binaryStringToByteArray(finalAsterixString.toString());
                 fos.write(binaryData);
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 
@@ -138,6 +125,40 @@ public class BinaryEncoderService {
         }
 
         return subfieldFspec;
+    }
+
+    private void iterateThroughFields(List<AsterixField> sortedFields,
+                                      List<AsterixSubfield> sortedSubfields,
+                                      Row row,
+                                      Map<String, Integer> columnIndexMap,
+                                      StringBuilder finalAsterixString) {
+
+        for (AsterixField field : sortedFields) {
+
+            if (field.getFormat().equals("compound")) {
+
+                finalAsterixString.append(generateSubfieldFspec(field));
+                appendSubfieldData(finalAsterixString, row, columnIndexMap, sortedSubfields);
+
+            } else {
+
+                appendFieldData(finalAsterixString, row, field, columnIndexMap);
+            }
+        }
+    }
+
+    private List<AsterixField> sortAsterixFieldsByFrn() {
+
+        List<AsterixField> sortedFields = new ArrayList<>(asterixFlightData.getAsterixFields());
+        sortedFields.sort(Comparator.comparingInt(AsterixField::getFrn));
+        return sortedFields;
+    }
+
+    private List<AsterixSubfield> sortAsterixSubfieldsByFrn() {
+
+        List<AsterixSubfield> sortedSubfields = new ArrayList<>(asterixFlightData.getAsterixSubfields());
+        sortedSubfields.sort(Comparator.comparingInt(AsterixSubfield::getFrn));
+        return sortedSubfields;
     }
 
     private void appendFieldData(StringBuilder binaryMessage,

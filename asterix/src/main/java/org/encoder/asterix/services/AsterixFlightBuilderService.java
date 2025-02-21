@@ -1,6 +1,6 @@
 package org.encoder.asterix.services;
 
-import org.encoder.asterix.models.FlightData;
+import org.encoder.common.models.FlightData;
 import org.encoder.common.AsterixFlightData;
 import org.encoder.common.Constants;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,9 +1,9 @@
 package org.encoder.common;
 
 import lombok.Getter;
-import org.encoder.asterix.models.AsterixField;
-import org.encoder.asterix.models.AsterixSubfield;
-import org.encoder.asterix.models.FlightData;
+import org.encoder.common.models.AsterixField;
+import org.encoder.common.models.AsterixSubfield;
+import org.encoder.common.models.FlightData;
 import org.springframework.stereotype.Component;
 
 import java.util.HashSet;

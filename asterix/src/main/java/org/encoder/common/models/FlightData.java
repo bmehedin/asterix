@@ -1,4 +1,4 @@
-package org.encoder.asterix.models;
+package org.encoder.common.models;
 
 import lombok.Getter;
 import lombok.Setter;
