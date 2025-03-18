@@ -66,12 +66,18 @@ public class AsterixFlightBuilderService {
             };
         } else {
 
-            return switch (id) {
-                case "I062/100" -> rand.nextInt(20000) - 10000;
-                case "I062/185" -> rand.nextInt(1000) - 500;
-                case "I062/220" -> rand.nextInt(500) - 250;
-                default -> 0;
-            };
+            return assignComputableFieldValue(id);
         }
+    }
+
+    private int assignComputableFieldValue(String id) {
+
+        return switch (id) {
+            case "I062/100" -> rand.nextInt(20000) - 10000;
+            case "I062/135" -> (rand.nextInt(1278) - 10) / 4;
+            case "I062/185" -> rand.nextInt(1000) - 500;
+            case "I062/220" -> rand.nextInt(8) - 2;
+            default -> 0;
+        };
     }
 }

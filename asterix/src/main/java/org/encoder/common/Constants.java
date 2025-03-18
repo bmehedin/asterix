@@ -9,7 +9,7 @@ public class Constants {
     public static final int VELOCITY_STEP = 2;
     public static final Set<String> SPLITTABLE_CELLS = Set.of("Calculated Track Position. (Cartesian)",
             "Calculated Track Velocity (Cartesian)");
-    public static final Set<String> COMPUTABLE_FIELD_IDS = Set.of("I062/100", "I062/185", "I062/220");
+    public static final Set<String> COMPUTABLE_FIELD_IDS = Set.of("I062/100", "I062/185", "I062/220", "I062/135");
     public static final String BINARY_CATEGORY_STRING = "00111110";
     public static final String BASE_FRN_STRING = "00000001000000010000000100000000";
 //                                                01234567

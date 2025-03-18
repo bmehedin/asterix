@@ -2,6 +2,8 @@ package org.encoder.asterix.services;
 
 import  java.io.*;
 import java.util.HashSet;
+import java.util.Map;
+import java.util.Optional;
 
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -13,6 +15,8 @@ import org.encoder.common.AsterixFlightData;
 import org.encoder.common.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.sound.midi.Track;
 
 @Service
 public class AsterixExcelDataBuilderService {
@@ -108,8 +112,15 @@ public class AsterixExcelDataBuilderService {
                     cellCounter++;
                 } else {
 
-                    row.createCell(cellCounter).setCellValue(value);
-                    cellCounter++;
+                    if (field.getName().equals("Calculated Track Barometric Altitude")) {
+
+                        row.createCell(cellCounter).setCellValue(computeAltitudeValue(value, position, flightData));
+                        cellCounter++;
+                    } else {
+
+                        row.createCell(cellCounter).setCellValue(value);
+                        cellCounter++;
+                    }
                 }
             }
         }
@@ -120,5 +131,18 @@ public class AsterixExcelDataBuilderService {
             row.createCell(cellCounter).setCellValue(value);
             cellCounter++;
         }
+    }
+
+    private int computeAltitudeValue(int value, int position, FlightData flightData) {
+
+        Optional<Integer> rocdValue = flightData.getAsterixFieldValues().entrySet()
+                .stream()
+                .filter(entry -> entry.getKey().getId().equals("I062/220"))
+                .map(Map.Entry::getValue)
+                .findFirst();
+
+        int computedValue = rocdValue.map(integer -> value + position * integer).orElse(value);
+
+        return Math.max(-10, Math.min(computedValue, 1200));
     }
 }
