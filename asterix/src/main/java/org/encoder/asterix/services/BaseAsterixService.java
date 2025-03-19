@@ -1,12 +1,19 @@
 package org.encoder.asterix.services;
 
+import lombok.RequiredArgsConstructor;
+import org.encoder.common.AsterixFlightData;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 @Service
+@RequiredArgsConstructor
 public class BaseAsterixService {
+
+    private final AsterixFlightData asterixFlightData;
 
     public Set<Integer> sanitiseCompoundAsterixIds(Set<String> asterixIds) {
 
@@ -24,6 +31,7 @@ public class BaseAsterixService {
                 compoundIdsToRemove.add(asterixId);
                 baseIdsToAdd.add(baseId);
                 subfieldIds.add(subfield);
+                asterixFlightData.addParentChildLink(parts[0], parts[1]);
             }
         }
 

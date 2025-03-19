@@ -39,7 +39,7 @@ public class AsterixFlightBuilderService {
 
             asterixFlightData.getAsterixSubfields().forEach(asterixSubfield -> {
 
-                int subfieldValue = rand.nextInt(2);
+                int subfieldValue = rand.nextInt(400);
                 flightData.getAsterixSubfieldValues().put(asterixSubfield, subfieldValue);
             });
 

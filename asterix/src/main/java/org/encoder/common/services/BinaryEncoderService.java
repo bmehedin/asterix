@@ -72,7 +72,12 @@ public class BinaryEncoderService {
         int messageLength = 7;
         for (AsterixField field : asterixFlightData.getAsterixFields()) {
 
-            messageLength += field.getLength();
+//            TODO: Fix issue when subfields from both I380 and I390 are encoded
+            if (field.getId().equals("I062/380")) {
+                messageLength += field.getLength() * 4;
+            } else {
+                messageLength += field.getLength();
+            }
         }
 
         for (AsterixSubfield subfield : asterixFlightData.getAsterixSubfields()) {
@@ -107,6 +112,11 @@ public class BinaryEncoderService {
     }
 
     private StringBuilder generateSubfieldFspec(AsterixField parentField) {
+
+//        hardcoding exception for item 380 BPS
+        if (parentField.getId().equals("I062/380")) {
+            return new StringBuilder(Constants.BASE_380_FRN_STRING);
+        }
 
         StringBuilder subfieldFspec = new StringBuilder("00000000");
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <!--
   Part of the AsterixInspector project
 
@@ -6,7 +6,6 @@
 
   by Volker Poplawski
 -->
-
 <asterix>
   <!--
   Part 9 : Category 62
@@ -67,7 +66,7 @@
       <field octed="1" msb="13" lsb="13">
         <name>Spare</name>
         <desc>Spare Bits set to zero</desc>
-        <mandatory value="0"/>
+        <mandatory value="0" />
       </field>
       <field octed="1" msb="12" lsb="1">
         <format>octal</format>
@@ -86,8 +85,10 @@
         <name>Time of Track Information</name>
         <desc>(LSB) = (2^-7)s = 1/128 s</desc>
       </field>
-      <desc><b>Notes</b><br/>1. This is the time of the track state vector.<br/>
-    2. The time is reset to zero at every midnight.<br/></desc>
+      <desc>
+        <b>Notes</b>
+        <br />1. This is the time of the track state vector.<br />
+    2. The time is reset to zero at every midnight.<br /></desc>
     </dataitem>
     <dataitem id="I062/080" frn="13" format="variable" length="1">
       <name>Track Status</name>
@@ -288,18 +289,20 @@
       <field octed="2" msb="5" lsb="2">
         <name>Spare</name>
         <desc>Spare Bits set to zero</desc>
-        <mandatory value="0"/>
+        <mandatory value="0" />
       </field>
-      <desc><b>Notes</b><br/>
+      <desc>
+        <b>Notes</b>
+        <br />
       1. If I062/080 (MRH) indicates “Barometric altitude (Mode C) more reliable”, and a calculated altitude is transmitted, it shall be transmitted
-      using data item I062/135 “Calculated Track Barometric Altitude”.<br/>
-      2. 2f I062/080 (MRH) indicates “Geometric altitude more reliable”, and a calculated altitude is transmitted, it shall be transmitted using data item I062/130 “Calculated Track Geometric Altitude”. In this case the source for I062/130 is indicated by I062/080 (SRC).<br/>
+      using data item I062/135 “Calculated Track Barometric Altitude”.<br />
+      2. 2f I062/080 (MRH) indicates “Geometric altitude more reliable”, and a calculated altitude is transmitted, it shall be transmitted using data item I062/130 “Calculated Track Geometric Altitude”. In this case the source for I062/130 is indicated by I062/080 (SRC).<br />
       3. Data Items I062/130, I062/135, and I062/136 may be transmitted in parallel whenever the respective information is available. This is
-      independent from the value transmitted on I062/080 (MRH).<br/>
-      4. Track type and coasting can also be derived from I062/290 System Track Update Ages<br/>
-      5. If the system supports the technology, default value (0) means that the technology was used to produce the report<br/>
-      6. If the system does not support the technology, default value is meaningless.<br/>
-      7. Bits 6/4 (EMS): other than subfield #11 of data item I062/380, these bits allow the SDPS to set the emergency indication as derived from other sources than ADS-B (e.g. based on the Mode 3/A code)<br/>
+      independent from the value transmitted on I062/080 (MRH).<br />
+      4. Track type and coasting can also be derived from I062/290 System Track Update Ages<br />
+      5. If the system supports the technology, default value (0) means that the technology was used to produce the report<br />
+      6. If the system does not support the technology, default value is meaningless.<br />
+      7. Bits 6/4 (EMS): other than subfield #11 of data item I062/380, these bits allow the SDPS to set the emergency indication as derived from other sources than ADS-B (e.g. based on the Mode 3/A code)<br />
       8. Bit 3 (PFT): with this flag an SDPS can indicate that internal processing
       points to the track being potentially false. Details on the internal
       processing are system dependent. In order to improve security on
@@ -308,19 +311,18 @@
       functions show a potentially spoofed target, the PFT bit will be used to
       convey this information to the CWP. If and how this information is
       processed and displayed on the CWP is a local matter and not subject
-      to the category 062 specification.<br/>
-      9. Bit 2 (FPLT): this bit -if set- indicates that the information contained in the target report has been updated by flight plan related data because no surveillance data was available for the target, or was created  based on flight plan related data in areas with no surveillance.<br/>
-      10. Bit 8 (DUPT) is set to 1 if the correlation between the target report and a flight plan is not possible because the Mode 3/A code stated in the flight plan exists more than once in the surveillance data.<br/>
-      11. Bit 7 (DUPF) -if set to 1- indicates that for a specific surveillance target more than one flight plan exists which makes correlation impossible.<br/>
-      12. Bit 6 (DUPM) is set to 1 if a target was correlated manually but also a regular flight plan exists.<br/>
-      13. All tracks for which bits 8, 7 or 6 are set to 1 are marked on the CWP.<br/>
+      to the category 062 specification.<br />
+      9. Bit 2 (FPLT): this bit -if set- indicates that the information contained in the target report has been updated by flight plan related data because no surveillance data was available for the target, or was created  based on flight plan related data in areas with no surveillance.<br />
+      10. Bit 8 (DUPT) is set to 1 if the correlation between the target report and a flight plan is not possible because the Mode 3/A code stated in the flight plan exists more than once in the surveillance data.<br />
+      11. Bit 7 (DUPF) -if set to 1- indicates that for a specific surveillance target more than one flight plan exists which makes correlation impossible.<br />
+      12. Bit 6 (DUPM) is set to 1 if a target was correlated manually but also a regular flight plan exists.<br />
+      13. All tracks for which bits 8, 7 or 6 are set to 1 are marked on the CWP.<br />
       14. Bit 5 (SFC) is set to 1 when the SDPS considers the target to be on the Surface
-      (the actual meaning is implementation dependent – please refer to chapter 4.8 above).<br/>
+      (the actual meaning is implementation dependent – please refer to chapter 4.8 above).<br />
       15. Bit 4 (IDD) is set to 1 when the Flight ID is present more than once in the
-      surveillance area.<br/>
+      surveillance area.<br />
       16. Bit 3 (IEC) is set to 1 when the comparison between various sources has
-      revealed an inconsistency in the information contained about emergency codes.<br/>
-      </desc>
+      revealed an inconsistency in the information contained about emergency codes.<br /></desc>
     </dataitem>
     <dataitem id="I062/100" frn="6" format="fixed" length="6">
       <name>Calculated Track Position. (Cartesian)</name>
@@ -357,7 +359,8 @@
         <scale>180/2^25</scale>
         <desc>In WGS.84 in two’s complement. Range -180 ≤ longitude &lt; 180 deg. = 180/2^25 degrees</desc>
       </field>
-      <desc><b>Note</b>The LSB B provides a resolution at least better than 0.6m.</desc>
+      <desc>
+        <b>Note</b>The LSB B provides a resolution at least better than 0.6m.</desc>
     </dataitem>
     <dataitem id="I062/110" frn="24" format="compound" length="1">
       <name>Mode 5 Data reports and Extended Mode 1 Code</name>
@@ -405,9 +408,11 @@
           <enum value="1">X-pulse set to one.</enum>
           <desc>X-pulse from Mode 5 Data reply or Report.</desc>
         </field>
-        <desc><b>Note</b><br/>
-      1. The flags M2, M3, MC refer to the contents of data items I062/120, I062/060 and I062/135 respectively. The flag M1 refers to the contents of the Subfield #5 (Extended Mode 1 Code in Octal Representation).<br/>
-      2. If an authenticated Mode 5 reply is received with the Emergency bit set, then the Military Emergency bit (ME) in Data Item I062/080, Track Status, shall be set.<br/>
+        <desc>
+          <b>Note</b>
+          <br />
+      1. The flags M2, M3, MC refer to the contents of data items I062/120, I062/060 and I062/135 respectively. The flag M1 refers to the contents of the Subfield #5 (Extended Mode 1 Code in Octal Representation).<br />
+      2. If an authenticated Mode 5 reply is received with the Emergency bit set, then the Military Emergency bit (ME) in Data Item I062/080, Track Status, shall be set.<br />
       3. If an authenticated Mode 5 reply is received with the Identification of Position bit set, then the Special Position Identification bit (SPI) in Data Item I062/080, Track Status, shall be set.
       </desc>
       </subfield>
@@ -416,7 +421,7 @@
         <field octed="1" msb="32" lsb="31">
           <name>Spare</name>
           <desc>Spare Bits set to zero</desc>
-          <mandatory value="0"/>
+          <mandatory value="0" />
         </field>
         <field octed="1" msb="30" lsb="17">
           <name>PIN</name>
@@ -425,7 +430,7 @@
         <field octed="1" msb="16" lsb="14">
           <name>Spare</name>
           <desc>Spare Bits set to zero</desc>
-          <mandatory value="0"/>
+          <mandatory value="0" />
         </field>
         <field octed="1" msb="13" lsb="9">
           <name>NAT</name>
@@ -434,7 +439,7 @@
         <field octed="1" msb="8" lsb="7">
           <name>Spare</name>
           <desc>Spare Bits set to zero</desc>
-          <mandatory value="0"/>
+          <mandatory value="0" />
         </field>
         <field octed="1" msb="6" lsb="1">
           <name>MIS</name>
@@ -457,7 +462,9 @@
           <scale>180/2^23</scale>
           <desc>In WGS.84 in two’s complement. Range -180 ≤ latitude &lt; 180 deg. LSB = 180/2^23 degrees</desc>
         </field>
-        <desc><b>Note</b><br/>
+        <desc>
+          <b>Note</b>
+          <br />
       The resolution implied by the LSB is better than the resolution with which Mode 5 position reports are transmitted from aircraft transponders using currently defined formats.</desc>
       </subfield>
       <subfield frn="4" format="fixed" length="2">
@@ -465,7 +472,7 @@
         <field octed="1" msb="16" lsb="16">
           <name>Spare</name>
           <desc>Spare Bits set to zero</desc>
-          <mandatory value="0"/>
+          <mandatory value="0" />
         </field>
         <field octed="1" msb="15" lsb="15">
           <name>RES</name>
@@ -480,24 +487,27 @@
           <scale>25</scale>
           <desc>GNSS-derived ellipsoid. Altitude of target, expressed as height above WGS 84</desc>
         </field>
-        <desc><b>NOTES</b><br/>
-      1. GA is coded as a 14-bit two’s complement binary number with an LSB of 25 ft. irrespective of the setting of RES.<br/>
-      2. The minimum value of GA that can be reported is -1000 ft.<br/>
-      </desc>
+        <desc>
+          <b>NOTES</b>
+          <br />
+      1. GA is coded as a 14-bit two’s complement binary number with an LSB of 25 ft. irrespective of the setting of RES.<br />
+      2. The minimum value of GA that can be reported is -1000 ft.<br /></desc>
       </subfield>
       <subfield frn="5" format="fixed" length="2">
         <name>Extended Mode 1 Code in Octal Representation</name>
         <field octed="1" msb="16" lsb="13">
           <name>Spare</name>
           <desc>Spare Bits set to zero</desc>
-          <mandatory value="0"/>
+          <mandatory value="0" />
         </field>
         <field octed="1" msb="12" lsb="1">
           <name>EM1</name>
           <format>octal</format>
           <desc>Extended Mode 1 Code in octal representation</desc>
         </field>
-        <desc><b>NOTES</b><br/>
+        <desc>
+          <b>NOTES</b>
+          <br />
       If Subfield #1 is present, the M1 bit in Subfield #1 indicates whether the Extended Mode 1 Code is from a Mode 5 reply or a Mode 1 reply. If Subfield #1 is not present, the Extended Mode 1 Code is from a Mode 1 reply.
       </desc>
       </subfield>
@@ -510,7 +520,9 @@
           <scale>1/128</scale>
           <desc>Time Offset coded as a twos complement number with an LSB of 1/128 s. The time at which the Mode 5 Reported Position (Subfield #3) and Mode 5 GNSS-derived Altitude (Subfield #4) are valid is given by Time of Day (I048/140) plus Time Offset.</desc>
         </field>
-        <desc><b>NOTES</b><br/>
+        <desc>
+          <b>NOTES</b>
+          <br />
       TOS shall be assumed to be zero if Subfield #6 is not present.
       </desc>
       </subfield>
@@ -519,7 +531,7 @@
         <field octed="1" msb="8" lsb="6">
           <name>Spare</name>
           <desc>Spare Bits set to zero</desc>
-          <mandatory value="0"/>
+          <mandatory value="0" />
         </field>
         <field octed="1" msb="5" lsb="5">
           <name>X5</name>
@@ -559,7 +571,7 @@
       <field octed="1" msb="16" lsb="13">
         <name>Spare</name>
         <desc>Spare Bits set to zero</desc>
-        <mandatory value="0"/>
+        <mandatory value="0" />
       </field>
       <field octed="1" msb="12" lsb="1">
         <name>Code</name>
@@ -577,10 +589,11 @@
         <scale>6.25</scale>
         <desc>(LSB) = 6.25 ft, Vmin = -1500 ft, Vmax = 150000 ft</desc>
       </field>
-      <desc><b>NOTES</b><br/>
-    1. LSB is required to be less than 10 ft by ICAO<br/>
-    2. The source of altitude is identified in bits (SRC) of item I062/080 Track Status<br/>
-    </desc>
+      <desc>
+        <b>NOTES</b>
+        <br />
+    1. LSB is required to be less than 10 ft by ICAO<br />
+    2. The source of altitude is identified in bits (SRC) of item I062/080 Track Status<br /></desc>
     </dataitem>
     <dataitem id="I062/135" frn="19" format="fixed" length="2">
       <name>Calculated Track Barometric Altitude</name>
@@ -598,7 +611,9 @@
         <scale>1/4</scale>
         <desc>(LSB) = 1/4 FL = 25 ft, Vmin = -15 FL, Vmax = 1500 FL</desc>
       </field>
-      <desc><b>NOTES</b><br/>
+      <desc>
+        <b>NOTES</b>
+        <br />
     ICAO specifies a range between –10 FL and 1267 FL for Mode C
     </desc>
     </dataitem>
@@ -612,12 +627,13 @@
         <scale>1/4</scale>
         <desc>(LSB) = 1/4 FL, Vmin = -15 FL, Vmax = 1500 FL</desc>
       </field>
-      <desc><b>NOTES</b><br/>
-    1. The criteria to determine the credibility of the flight level are Tracker dependent.<br/>
-    2. Credible means: within reasonable range of change with respect to the previous detection.<br/>
-    3. ICAO specifies a range between –10 FL and 1267 FL for Mode C<br/>
-    4. This item includes the barometric altitude received from ADS-B<br/>
-    </desc>
+      <desc>
+        <b>NOTES</b>
+        <br />
+    1. The criteria to determine the credibility of the flight level are Tracker dependent.<br />
+    2. Credible means: within reasonable range of change with respect to the previous detection.<br />
+    3. ICAO specifies a range between –10 FL and 1267 FL for Mode C<br />
+    4. This item includes the barometric altitude received from ADS-B<br /></desc>
     </dataitem>
     <dataitem id="I062/185" frn="7" format="fixed" length="4">
       <name>Calculated Track Velocity (Cartesian)</name>
@@ -635,7 +651,9 @@
         <scale>0.25</scale>
         <desc> (LSB) = 0.25 m/s, Max.range = ±8192m/s</desc>
       </field>
-      <desc><b>NOTES</b><br/>
+      <desc>
+        <b>NOTES</b>
+        <br />
     The y-axis points to the Geographical North at the location of the target.
     </desc>
     </dataitem>
@@ -675,9 +693,11 @@
       <field octed="1" msb="1" lsb="1">
         <name>Spare</name>
         <desc>Spare Bits set to zero</desc>
-        <mandatory value="0"/>
+        <mandatory value="0" />
       </field>
-      <desc><b>NOTE</b><br/>
+      <desc>
+        <b>NOTE</b>
+        <br />
     The ADF, if set, indicates that a difference has been detected in the
     altitude information derived from radar as compared to other technologies (such as ADS-B).
     </desc>
@@ -699,10 +719,11 @@
         <scale>0.25</scale>
         <desc>(LSB) = 0.25 m/s^2</desc>
       </field>
-      <desc><b>NOTES</b><br/>
-    1. The y-axis points to the Geographical North at the location of the target.<br/>
-    2. Maximum value means maximum value or above.<br/>
-    </desc>
+      <desc>
+        <b>NOTES</b>
+        <br />
+    1. The y-axis points to the Geographical North at the location of the target.<br />
+    2. Maximum value means maximum value or above.<br /></desc>
     </dataitem>
     <dataitem id="I062/220" frn="20" format="fixed" length="2">
       <name>Calculated Rate Of Climb/Descent</name>
@@ -714,7 +735,9 @@
         <scale>6.25</scale>
         <desc>(LSB) = 6.25 feet/minute</desc>
       </field>
-      <desc><b>NOTES</b><br/>
+      <desc>
+        <b>NOTES</b>
+        <br />
     A positive value indicates a climb, whereas a negative value indicates a descent.
     </desc>
     </dataitem>
@@ -732,19 +755,20 @@
       <field octed="1" msb="54" lsb="49">
         <name>Spare</name>
         <desc>Spare Bits set to zero</desc>
-        <mandatory value="0"/>
+        <mandatory value="0" />
       </field>
       <field octed="1" msb="48" lsb="1">
         <format>icao6str</format>
         <desc>Characters 1-8 (coded on 6 bits each) defining target identification.</desc>
       </field>
-      <desc><b>NOTES</b><br/>
-    1. For coding, see section 3.8.2.9 of [Ref.3]<br/>
+      <desc>
+        <b>NOTES</b>
+        <br />
+    1. For coding, see section 3.8.2.9 of [Ref.3]<br />
     2. As the Callsign of the target can already be transmitted (thanks to I062/380
     Subfield #25 if downlinked from the aircraft or thanks to I062/390 Subfield #2
     if the target is correlated to a flight plan), and in order to avoid confusion at
-    end user’s side, this item SHALL not be used.<br/>
-    </desc>
+    end user’s side, this item SHALL not be used.<br /></desc>
     </dataitem>
     <dataitem id="I062/270" frn="22" format="variable" length="1">
       <name>Target Size and Orientation</name>
@@ -770,11 +794,12 @@
         <scale>1</scale>
         <desc>(LSB) = 1m</desc>
       </field>
-      <desc><b>NOTES</b><br/>
+      <desc>
+        <b>NOTES</b>
+        <br />
     1. The orientation gives the direction which the target nose is pointing to,
-    relative to the Geographical North.<br/>
-    2. When the length only is sent, the largest dimension is provided.<br/>
-    </desc>
+    relative to the Geographical North.<br />
+    2. When the length only is sent, the largest dimension is provided.<br /></desc>
     </dataitem>
     <dataitem id="I062/290" frn="14" format="compound" length="2">
       <name>System Track Update Ages</name>
@@ -879,13 +904,14 @@
           <desc>Age of the last MLT detection, (LSB) = 1/4 s, Maximum value = 63.75s</desc>
         </field>
       </subfield>
-      <desc><b>NOTES</b><br/>
+      <desc>
+        <b>NOTES</b>
+        <br />
     1. Except for Track Age, the ages are counted from Data Item I062/070, Time Of Track Information, using the following formula:
-    Age = Time of track information - Time of last detection used to update the track<br/>
-    2. The time of last detection is derived from monosensor category time of day<br/>
-    3. If the data has never been received, then the corresponding subfield is not sent.<br/>
-    4. Maximum value means maximum value or above.<br/>
-    </desc>
+    Age = Time of track information - Time of last detection used to update the track<br />
+    2. The time of last detection is derived from monosensor category time of day<br />
+    3. If the data has never been received, then the corresponding subfield is not sent.<br />
+    4. Maximum value means maximum value or above.<br /></desc>
     </dataitem>
     <dataitem id="I062/295" frn="16" format="compound" length="1">
       <name>Track Data Ages</name>
@@ -969,7 +995,9 @@
           <scale>1/4</scale>
           <desc>Age of the DAP “Indicated Airspeed / Mach Number” in item 062/380 (Subfield #4) Maximum value = 63.75s</desc>
         </field>
-        <desc><b>NOTES</b><br/>
+        <desc>
+          <b>NOTES</b>
+          <br />
       Despite there are now two subfields (#29 and #30) reporting the ages
       of, respectively, the Indicated Airspeed track data and the Mach
       Number track data, this former subfield is kept free in order to
@@ -1207,9 +1235,10 @@
           <desc>Age of the DAP “Barometric Pressure Setting” in item 062/380 (Subfield #28)  (LSB) = 1/4 s, Maximum value =63.75s</desc>
         </field>
       </subfield>
-      <desc><b>NOTES</b><br/>
-    In all the subfields, the age is the time delay since the value was measured <br/>
-    </desc>
+      <desc>
+        <b>NOTES</b>
+        <br />
+    In all the subfields, the age is the time delay since the value was measured <br /></desc>
     </dataitem>
     <dataitem id="I062/300" frn="23" format="fixed" length="1">
       <name>Vehicle Fleet Identification</name>
@@ -1248,7 +1277,9 @@
           <name>SIC</name>
           <desc>System Identification Code</desc>
         </field>
-        <desc><b>Note</b><br/>
+        <desc>
+          <b>Note</b>
+          <br />
       The up-to-date list of SACs is published on the Eurocontrol Web Site
       (http://www.eurocontrol.int).
       </desc>
@@ -1270,14 +1301,15 @@
           <scale>360/2^16</scale>
           <desc>Measured azimuth (LSB) = 360° / 2 16 ≅ 0.0055°</desc>
         </field>
-        <desc><b>Note</b><br/>
-      The measured position is :<br/>
-      1. In case of a plot, the measured bias-corrected polar coordinates;<br/>
+        <desc>
+          <b>Note</b>
+          <br />
+      The measured position is :<br />
+      1. In case of a plot, the measured bias-corrected polar coordinates;<br />
       2. In case of a sensor local track, the measured bias-corrected
-        polar co-ordinates of the plot associated to the track;<br/>
+        polar co-ordinates of the plot associated to the track;<br />
       3. In case of a local track without detection, the extrapolated bias-
-        corrected polar co-ordinates.<br/>
-      </desc>
+        corrected polar co-ordinates.<br /></desc>
       </subfield>
       <subfield frn="3" format="fixed" length="2">
         <name>Measured 3-D Height</name>
@@ -1334,14 +1366,16 @@
         <field octed="1" msb="13" lsb="13">
           <name>Spare</name>
           <desc>Spare Bits set to zero</desc>
-          <mandatory value="0"/>
+          <mandatory value="0" />
         </field>
         <field octed="1" msb="12" lsb="1">
           <name>Reply</name>
           <format>octal</format>
           <desc>Mode 3/A reply under the form of 4 digits in octal representation</desc>
         </field>
-        <desc><b>Note</b><br/>
+        <desc>
+          <b>Note</b>
+          <br />
       Smoothed MODE 3/A data (L = 1) will be used in case of absence of
       MODE 3/A code information in the plot or in case of difference
       between plot and sensor local track MODE 3/A code information.
@@ -1382,7 +1416,7 @@
         <field octed="1" msb="2" lsb="1">
           <name>Spare</name>
           <desc>Spare Bits set to zero</desc>
-          <mandatory value="0"/>
+          <mandatory value="0" />
         </field>
       </subfield>
     </dataitem>
@@ -1428,7 +1462,9 @@
           <unit>nmi/s</unit>
           <scale>2^-14</scale>
         </field>
-        <desc><b>Note</b><br/>
+        <desc>
+          <b>Note</b>
+          <br />
       Despite there are now two subfields (#26 and #27) reporting,
       respectively, the Indicated Airspeed track data and the Mach Number
       track data, this former subfield is kept free in order to prevent a full
@@ -1468,7 +1504,7 @@
           <format>int</format>
           <unit>ft</unit>
           <scale>25</scale>
-          <desc>Altitude in two’s complement form<br/>LSB=25ft<br/>-1300ft ≤ Altitude ≤ 100000ft<br/></desc>
+          <desc>Altitude in two’s complement form<br />LSB=25ft<br />-1300ft ≤ Altitude ≤ 100000ft<br /></desc>
         </field>
       </subfield>
       <subfield frn="7" format="fixed" length="2">
@@ -1497,7 +1533,7 @@
           <format>int</format>
           <unit>ft</unit>
           <scale>25</scale>
-          <desc>Altitude in two’s complement form<br/>LSB=25ft<br/>-1300ft ≤ Altitude ≤ 100000ft<br/></desc>
+          <desc>Altitude in two’s complement form<br />LSB=25ft<br />-1300ft ≤ Altitude ≤ 100000ft<br /></desc>
         </field>
       </subfield>
       <subfield frn="8" format="fixed" length="2">
@@ -1515,7 +1551,7 @@
         <field octed="1" msb="6" lsb="2">
           <name>Spare</name>
           <desc>Spare Bits set to zero</desc>
-          <mandatory value="0"/>
+          <mandatory value="0" />
         </field>
       </subfield>
       <subfield frn="9" format="repetive" length="15">
@@ -1539,21 +1575,21 @@
           <format>int</format>
           <unit>ft</unit>
           <scale>10</scale>
-          <desc>LSB=10ft<br/> -1500 ft ≤ altitude ≤ 150000 ft<br/></desc>
+          <desc>LSB=10ft<br /> -1500 ft ≤ altitude ≤ 150000 ft<br /></desc>
         </field>
         <field octed="1" msb="96" lsb="73">
           <name>Latitude</name>
           <format>int</format>
           <unit>deg</unit>
           <scale>180/2^23</scale>
-          <desc>In WGS.84 in two’s complement.<br/>-90 ≤ latitude ≤ 90 deg.<br/>LSB = 180/2^23 deg. = approx.2.145767*10^-05 deg.<br/></desc>
+          <desc>In WGS.84 in two’s complement.<br />-90 ≤ latitude ≤ 90 deg.<br />LSB = 180/2^23 deg. = approx.2.145767*10^-05 deg.<br /></desc>
         </field>
         <field octed="1" msb="72" lsb="49">
           <name>Longitude</name>
           <format>int</format>
           <unit>deg</unit>
           <scale>180/2^23</scale>
-          <desc>In WGS.84 in two’s complement.<br/>-180 ≤ longitude ≤ 180 deg.<br/>LSB = 180/2^23 deg. = approx.2.145767*10^-05 deg.<br/></desc>
+          <desc>In WGS.84 in two’s complement.<br />-180 ≤ longitude ≤ 180 deg.<br />LSB = 180/2^23 deg. = approx.2.145767*10^-05 deg.<br /></desc>
         </field>
         <field octed="1" msb="48" lsb="45">
           <name>Point Type</name>
@@ -1593,23 +1629,24 @@
           <format>uint</format>
           <unit>s</unit>
           <scale>1</scale>
-          <desc>Time Over Point<br/>LSB = 1 second<br/></desc>
+          <desc>Time Over Point<br />LSB = 1 second<br /></desc>
         </field>
         <field octed="1" msb="16" lsb="1">
           <name>TTR</name>
           <format>uint</format>
           <unit>nmi</unit>
           <scale>0.01</scale>
-          <desc>TCP Turn radius<br/>LSB = 0.01Nm<br/>0 ≤ TTR ≤ 655.35 Nm</desc>
+          <desc>TCP Turn radius<br />LSB = 0.01Nm<br />0 ≤ TTR ≤ 655.35 Nm</desc>
         </field>
-        <desc><b>Note</b><br/>
-      1. NC is set to one when the aircraft will not fly the path described by the TCP data.<br/>
-      2. TCP numbers start from zero.<br/>
-      3. LT = Lateral Type<br/>
-      4. VT = Vertical Type<br/>
-      5. TOV gives the estimated time before reaching the point. It is defined as theabsolute time from midnight.<br/>
-      6. TOV meaningful only if TOA is set to 0<br/>
-      </desc>
+        <desc>
+          <b>Note</b>
+          <br />
+      1. NC is set to one when the aircraft will not fly the path described by the TCP data.<br />
+      2. TCP numbers start from zero.<br />
+      3. LT = Lateral Type<br />
+      4. VT = Vertical Type<br />
+      5. TOV gives the estimated time before reaching the point. It is defined as theabsolute time from midnight.<br />
+      6. TOV meaningful only if TOA is set to 0<br /></desc>
       </subfield>
       <subfield frn="10" format="fixed" length="2">
         <name>Communications/ACAS Capability and Flight Status reported by Mode-S</name>
@@ -1640,7 +1677,7 @@
         <field octed="1" msb="10" lsb="9">
           <name>Spare</name>
           <desc>Spare Bits set to zero</desc>
-          <mandatory value="0"/>
+          <mandatory value="0" />
         </field>
         <field octed="1" msb="8" lsb="8">
           <name>SSC</name>
@@ -1700,7 +1737,7 @@
         <field octed="1" msb="9" lsb="4">
           <name>Spare</name>
           <desc>Spare Bits set to zero</desc>
-          <mandatory value="0"/>
+          <mandatory value="0" />
         </field>
         <field octed="1" msb="3" lsb="1">
           <name>STAT</name>
@@ -1722,7 +1759,9 @@
           <name>MB Data</name>
           <desc>56-bit message conveying Mode S Comm B message data of BDS Register 3,0</desc>
         </field>
-        <desc><b>Note</b><br/>
+        <desc>
+          <b>Note</b>
+          <br />
       Refer to ICAO Draft SARPs for ACAS for detailed explanations.
       </desc>
       </subfield>
@@ -1733,7 +1772,7 @@
           <format>int</format>
           <unit>ft/min</unit>
           <scale>6.25</scale>
-          <desc>Barometric Vertical Rate in two’s complement form<br/>(LSB) = 6.25 feet/minute</desc>
+          <desc>Barometric Vertical Rate in two’s complement form<br />(LSB) = 6.25 feet/minute</desc>
         </field>
       </subfield>
       <subfield frn="14" format="fixed" length="2">
@@ -1743,7 +1782,7 @@
           <format>int</format>
           <unit>ft/min</unit>
           <scale>6.25</scale>
-          <desc>Geometric Vertical Rate in two’s complement form<br/>(LSB) = 6.25 feet/minute</desc>
+          <desc>Geometric Vertical Rate in two’s complement form<br />(LSB) = 6.25 feet/minute</desc>
         </field>
       </subfield>
       <subfield frn="15" format="fixed" length="2">
@@ -1753,7 +1792,7 @@
           <format>int</format>
           <unit>deg</unit>
           <scale>0.01</scale>
-          <desc>Roll Angle in two’s complement form<br/>(LSB) = 0.01 degree -180 ≤ Roll Angle ≤ 180</desc>
+          <desc>Roll Angle in two’s complement form<br />(LSB) = 0.01 degree -180 ≤ Roll Angle ≤ 180</desc>
         </field>
       </subfield>
       <subfield frn="16" format="fixed" length="2">
@@ -1770,25 +1809,26 @@
           <name>Spare</name>
           <desc>Spare Bits set to zero</desc>
           <mandatory value="0">
-        </mandatory>
+          </mandatory>
         </field>
         <field octed="1" msb="8" lsb="2">
           <name>Rate of Turn</name>
           <format>int</format>
           <unit>deg/s</unit>
           <scale>1/4</scale>
-          <desc>Rate of Turn in two’s complement form<br/>(LSB) = 2^-2°/s = 1/4°/s <br/>-15 °/s ≤ Rate of Turn ≤ 15°/s</desc>
+          <desc>Rate of Turn in two’s complement form<br />(LSB) = 2^-2°/s = 1/4°/s <br />-15 °/s ≤ Rate of Turn ≤ 15°/s</desc>
         </field>
         <field octed="1" msb="1" lsb="1">
           <name>Spare</name>
           <desc>Spare Bits set to zero</desc>
           <mandatory value="0">
-        </mandatory>
+          </mandatory>
         </field>
-        <desc><b>Note</b><br/>
-        1. A positive value represents a right turn, whereas a negative value represents a left turn.<br/>
-        2. Value 15 means 15°/s or above.<br/>
-      </desc>
+        <desc>
+          <b>Note</b>
+          <br />
+        1. A positive value represents a right turn, whereas a negative value represents a left turn.<br />
+        2. Value 15 means 15°/s or above.<br /></desc>
       </subfield>
       <subfield frn="17" format="fixed" length="2">
         <name>Track Angle</name>
@@ -1807,7 +1847,7 @@
           <format>int</format>
           <unit>nmi/s</unit>
           <scale>2^-14</scale>
-          <desc>Ground Speed in two's complement form referenced to WGS84<br/>(LSB) = 2^-14 NM/s = 0.22 kt<br/>-2 NM/s ≤ Ground Speed &lt; 2 NM/s</desc>
+          <desc>Ground Speed in two's complement form referenced to WGS84<br />(LSB) = 2^-14 NM/s = 0.22 kt<br />-2 NM/s ≤ Ground Speed &lt; 2 NM/s</desc>
         </field>
       </subfield>
       <subfield frn="19" format="fixed" length="1">
@@ -1815,7 +1855,9 @@
         <field octed="1" msb="8" lsb="1">
           <name>Velocity Uncertainty Category</name>
         </field>
-        <desc><b>Note</b><br/>
+        <desc>
+          <b>Note</b>
+          <br />
          Velocity uncertainty category of the least accurate velocity component
       </desc>
       </subfield>
@@ -1844,28 +1886,28 @@
         <field octed="1" msb="60" lsb="57">
           <name>Spare</name>
           <desc>Spare Bits set to zero</desc>
-          <mandatory value="0"/>
+          <mandatory value="0" />
         </field>
         <field octed="1" msb="56" lsb="41">
           <name>Wind Speed</name>
           <format>uint</format>
           <unit>kn</unit>
           <scale>1</scale>
-          <desc>(LSB) = 1 knot<br/>0 ≤ Wind Speed ≤ 300</desc>
+          <desc>(LSB) = 1 knot<br />0 ≤ Wind Speed ≤ 300</desc>
         </field>
         <field octed="1" msb="40" lsb="25">
           <name>Wind Direction</name>
           <format>uint</format>
           <unit>deg</unit>
           <scale>1</scale>
-          <desc>(LSB) = 1 knot<br/>0 ≤ Wind Speed ≤ 300</desc>
+          <desc>(LSB) = 1 knot<br />0 ≤ Wind Speed ≤ 300</desc>
         </field>
         <field octed="1" msb="24" lsb="9">
           <name>Temperature in degrees celsius</name>
           <format>int</format>
           <unit>celsius</unit>
           <scale>0.25</scale>
-          <desc>(LSB) = 0.25°<br/>-100 °C ≤ Temperature ≤ 100 °C</desc>
+          <desc>(LSB) = 0.25°<br />-100 °C ≤ Temperature ≤ 100 °C</desc>
         </field>
         <field octed="1" msb="8" lsb="1">
           <name>Turbulence</name>
@@ -1910,7 +1952,7 @@
           <format>int</format>
           <unit>deg</unit>
           <scale>180/2^23</scale>
-          <desc>In WGS.84 in two’s complement. Range -90 ≤ latitude ≤ 90 deg. LSB = 180/2^23 degrees = 2.145767 * 10^-05 degrees.<br/>
+          <desc>In WGS.84 in two’s complement. Range -90 ≤ latitude ≤ 90 deg. LSB = 180/2^23 degrees = 2.145767 * 10^-05 degrees.<br />
         This corresponds to a resolution of at least 2.4 meters</desc>
         </field>
         <field octed="1" msb="24" lsb="1">
@@ -1918,10 +1960,12 @@
           <format>int</format>
           <unit>deg</unit>
           <scale>180/2^23</scale>
-          <desc>In WGS.84 in two’s complement. Range -180 ≤ latitude &lt; 180 deg. LSB = 180/2^23 degrees  = 2.145767 * 10-05 degrees.<br/>
+          <desc>In WGS.84 in two’s complement. Range -180 ≤ latitude &lt; 180 deg. LSB = 180/2^23 degrees  = 2.145767 * 10-05 degrees.<br />
         This corresponds to a resolution of at least 2.4 meters.</desc>
         </field>
-        <desc><b>Note</b><br/>
+        <desc>
+          <b>Note</b>
+          <br />
       Positive longitude indicates East. Positive latitude indicates North.
       </desc>
       </subfield>
@@ -1932,13 +1976,14 @@
           <format>int</format>
           <unit>ft</unit>
           <scale>6.25</scale>
-          <desc>Altitude in two’s complement form<br/>
+          <desc>Altitude in two’s complement form<br />
         -1500 ft ≤ Altitude ≤ 150000 ft (LSB) = 6.25 ft
         </desc>
         </field>
-        <desc><b>NOTES</b><br/>
-      LSB is required to be less than 10 ft by ICAO<br/>
-      </desc>
+        <desc>
+          <b>NOTES</b>
+          <br />
+      LSB is required to be less than 10 ft by ICAO<br /></desc>
       </subfield>
       <subfield frn="24" format="fixed" length="1">
         <name>Position Uncertainty</name>
@@ -1946,7 +1991,7 @@
           <name>Spare</name>
           <desc>Spare Bits set to zero</desc>
           <mandatory value="0">
-        </mandatory>
+          </mandatory>
         </field>
         <field octed="1" msb="4" lsb="1">
           <name>PUN</name>
@@ -1968,7 +2013,9 @@
           <name>BDS2</name>
           <desc>Comm B Data Buffer Store 2 Address</desc>
         </field>
-        <desc><b>NOTE</b><br/>
+        <desc>
+          <b>NOTE</b>
+          <br />
      Only DAPs that can not be encoded into other subfields of this item
      should be sent using subfield #25
      </desc>
@@ -1994,12 +2041,7 @@
         </field>
       </subfield>
       <subfield frn="28" format="fixed" length="2">
-        <name>Barometric Pressure Setting (derived from Mode S BDS 4,0)</name>
-        <field octed="1" msb="16" lsb="13">
-          <name>Spare</name>
-          <desc>Spare Bits set to zero</desc>
-          <mandatory value="0"/>
-        </field>
+        <name>Barometric Pressure Setting</name>
         <field octed="1" msb="12" lsb="1">
           <name>Barometric Pressure Setting</name>
           <format>uint</format>
@@ -2007,7 +2049,9 @@
           <scale>0.1</scale>
           <desc>LSB=0.1mb -0mb ≤ BPS ≤ 409.5 mb</desc>
         </field>
-        <desc><b>NOTE</b><br/>
+        <desc>
+          <b>NOTE</b>
+          <br />
        BPS is the barometric pressure setting of the aircraft minus 800 mb.
        </desc>
       </subfield>
@@ -2025,7 +2069,9 @@
           <name>SIC</name>
           <desc>System Identification Code</desc>
         </field>
-        <desc><b>Note</b><br/>
+        <desc>
+          <b>Note</b>
+          <br />
         The up-to-date list of SACs is published on the Eurocontrol Web Site (http://www.eurocontrol.int).
       </desc>
       </subfield>
@@ -2035,7 +2081,9 @@
           <name>Callsign</name>
           <format>ascii</format>
         </field>
-        <desc><b>Note</b><br/>
+        <desc>
+          <b>Note</b>
+          <br />
         Each one of the seven Octets contains an ASCII Character. The
         Callsign is always left adjusted. It contains up to seven upper-case
         alphanumeric characters, the remaining character positions (if any)
@@ -2054,7 +2102,7 @@
         <field octed="1" msb="30" lsb="28">
           <name>Spare</name>
           <desc>Spare Bits set to zero</desc>
-          <mandatory value="0"/>
+          <mandatory value="0" />
         </field>
         <field octed="1" msb="27" lsb="1">
           <name>NBR</name>
@@ -2093,7 +2141,7 @@
         <field octed="1" msb="1" lsb="1">
           <name>Spare</name>
           <desc>Spare Bit set to zero</desc>
-          <mandatory value="0"/>
+          <mandatory value="0" />
         </field>
       </subfield>
       <subfield frn="5" format="fixed" length="4">
@@ -2102,10 +2150,11 @@
           <format>ascii</format>
           <name>Aircraft type</name>
         </field>
-        <desc><b>Note</b><br/>
-      1. Each of the four Octets composing the type of an aircraft contains an ASCII Character (upper-case alphabetic characters with trailing spaces).<br/>
-      2. The types of aircraft are defined in the ICAO Document 4444.<br/>
-      </desc>
+        <desc>
+          <b>Note</b>
+          <br />
+      1. Each of the four Octets composing the type of an aircraft contains an ASCII Character (upper-case alphabetic characters with trailing spaces).<br />
+      2. The types of aircraft are defined in the ICAO Document 4444.<br /></desc>
       </subfield>
       <subfield frn="6" format="fixed" length="1">
         <name>Wake Turbulence Category</name>
@@ -2125,10 +2174,11 @@
           <name>Departure Airport</name>
           <format>ascii</format>
         </field>
-        <desc><b>Note</b><br/>
-      1. Each one of the four Octets composing the name of an airport contains an ASCII Character (upper case alphabetic).<br/>
-      2. The Airport Names are indicated in the ICAO Location Indicators book.<br/>
-      </desc>
+        <desc>
+          <b>Note</b>
+          <br />
+      1. Each one of the four Octets composing the name of an airport contains an ASCII Character (upper case alphabetic).<br />
+      2. The Airport Names are indicated in the ICAO Location Indicators book.<br /></desc>
       </subfield>
       <subfield frn="8" format="fixed" length="4">
         <name>Destination Airport</name>
@@ -2136,11 +2186,12 @@
           <name>Destination Airport</name>
           <format>ascii</format>
         </field>
-        <desc><b>Note</b><br/>
+        <desc>
+          <b>Note</b>
+          <br />
       1. Each one of the four Octets composing the name of an airport contains an
-      ASCII Character (upper case alphabetic).<br/>
-      2. The Airport Names are indicated in the ICAO Location Indicators book.<br/>
-      </desc>
+      ASCII Character (upper case alphabetic).<br />
+      2. The Airport Names are indicated in the ICAO Location Indicators book.<br /></desc>
       </subfield>
       <subfield frn="9" format="fixed" length="3">
         <name>Runway Designation</name>
@@ -2148,10 +2199,11 @@
           <name>Runway Designation</name>
           <format>ascii</format>
         </field>
-        <desc><b>Note</b><br/>
-      1. NU1, NU2 and LTR each contain an ASCII character<br/>
-      2. For details refer to ICAO Annex 14 Section 5<br/>
-      </desc>
+        <desc>
+          <b>Note</b>
+          <br />
+      1. NU1, NU2 and LTR each contain an ASCII character<br />
+      2. For details refer to ICAO Annex 14 Section 5<br /></desc>
       </subfield>
       <subfield frn="10" format="fixed" length="2">
         <name>Current Cleared Flight Level</name>
@@ -2175,7 +2227,9 @@
           <format>hex</format>
           <desc>8-bit Control Position identification code</desc>
         </field>
-        <desc><b>Note</b><br/>
+        <desc>
+          <b>Note</b>
+          <br />
       The centre and the control position identification codes have to be
       defined between communication partners.
       </desc>
@@ -2209,7 +2263,7 @@
         <field octed="1" msb="25" lsb="22">
           <name>Spare</name>
           <desc>Spare Bit set to zero</desc>
-          <mandatory value="0"/>
+          <mandatory value="0" />
         </field>
         <field octed="1" msb="21" lsb="17">
           <name>HOR</name>
@@ -2219,7 +2273,7 @@
         <field octed="1" msb="16" lsb="15">
           <name>Spare</name>
           <desc>Spare Bit set to zero</desc>
-          <mandatory value="0"/>
+          <mandatory value="0" />
         </field>
         <field octed="1" msb="14" lsb="9">
           <name>MIN</name>
@@ -2234,7 +2288,7 @@
         <field octed="1" msb="7" lsb="7">
           <name>Spare</name>
           <desc>Spare Bit set to zero</desc>
-          <mandatory value="0"/>
+          <mandatory value="0" />
         </field>
         <field octed="1" msb="6" lsb="1">
           <name>SEC</name>
@@ -2249,7 +2303,9 @@
           <name>Aircraft Stand</name>
           <format>ascii</format>
         </field>
-        <desc><b>Note</b><br/>
+        <desc>
+          <b>Note</b>
+          <br />
       Each one of the six Octets contains an ASCII Character. The Aircraft
       Stand identification is always left adjusted. It contains up to six upper-
       case alphanumeric characters, the remaining character positions (if
@@ -2273,7 +2329,7 @@
         <field octed="1" msb="4" lsb="1">
           <name>Spare</name>
           <desc>Spare Bit set to zero</desc>
-          <mandatory value="0"/>
+          <mandatory value="0" />
         </field>
       </subfield>
       <subfield frn="15" format="fixed" length="7">
@@ -2281,7 +2337,9 @@
         <field octed="1" msb="56" lsb="1">
           <format>ascii</format>
         </field>
-        <desc><b>Note</b><br/>
+        <desc>
+          <b>Note</b>
+          <br />
       Each one of the seven Octets contains an ASCII Character. The SID is
       always left adjusted. It contains up to seven alphanumeric characters, the
       remaining character positions (if any) are padded with space characters.
@@ -2292,7 +2350,9 @@
         <field octed="1" msb="56" lsb="1">
           <format>ascii</format>
         </field>
-        <desc><b>Note</b><br/>
+        <desc>
+          <b>Note</b>
+          <br />
       Each one of the seven Octets contains an ASCII Character. The STAR
       is always left adjusted. It contains up to seven alphanumeric characters, the
       remaining character positions (if any) are padded with space characters.
@@ -2303,7 +2363,7 @@
         <field octed="1" msb="16" lsb="13">
           <name>Spare</name>
           <desc>Spare Bit set to zero</desc>
-          <mandatory value="0"/>
+          <mandatory value="0" />
         </field>
         <field octed="1" msb="13" lsb="13">
           <name>VA</name>
@@ -2315,10 +2375,11 @@
           <desc>Mode-3/A reply in octal representation</desc>
           <format>octal</format>
         </field>
-        <desc><b>Note</b><br/>
-      1. This subfield is used only when the aircraft is transmitting an emergency Mode 3/A code<br/>
-      2. If VA = 0, the content of bits 12/1 is meaningless<br/>
-      </desc>
+        <desc>
+          <b>Note</b>
+          <br />
+      1. This subfield is used only when the aircraft is transmitting an emergency Mode 3/A code<br />
+      2. If VA = 0, the content of bits 12/1 is meaningless<br /></desc>
       </subfield>
       <subfield frn="18" format="fixed" length="7">
         <name>Pre-Emergency Callsign</name>
@@ -2326,13 +2387,14 @@
           <name>Callsign</name>
           <format>ascii</format>
         </field>
-        <desc><b>Note</b><br/>
+        <desc>
+          <b>Note</b>
+          <br />
        1. Each one of the seven Octets contains an ASCII Character. The
        Callsign is always left adjusted. It contains up to seven upper-case
        alphanumeric characters, the remaining character positions (if any)
-       are padded with space characters.<br/>
-       2.  This subfield is used only when en emergency Mode 3/A is associated with the track (I062/390 Subfield #17)<br/>
-      </desc>
+       are padded with space characters.<br />
+       2.  This subfield is used only when en emergency Mode 3/A is associated with the track (I062/390 Subfield #17)<br /></desc>
       </subfield>
     </dataitem>
     <dataitem id="I062/500" frn="27" format="compound" length="1">
@@ -2354,7 +2416,9 @@
           <scale>0.5</scale>
           <desc>LSB = 0.5m</desc>
         </field>
-        <desc><b>Note</b><br/>
+        <desc>
+          <b>Note</b>
+          <br />
        Maximum value means maximum value or above.
       </desc>
       </subfield>
@@ -2367,7 +2431,9 @@
           <scale>0.5</scale>
           <desc>(COV) XY Covariance Component in two’s complement form  (LSB) = 0.5m</desc>
         </field>
-        <desc><b>Note</b><br/>
+        <desc>
+          <b>Note</b>
+          <br />
      1. XY covariance component = sign {Cov(X,Y)} * sqrt {abs [Cov (X,Y)]}
      2. The maximum value for the (unsigned) XY covariance component is 16.383 km.
      </desc>
@@ -2388,7 +2454,9 @@
           <scale>180/2^25</scale>
           <desc>LSB = 180/2^25</desc>
         </field>
-        <desc><b>Note</b><br/>
+        <desc>
+          <b>Note</b>
+          <br />
        Maximum value means maximum value or above.
       </desc>
       </subfield>
@@ -2399,10 +2467,12 @@
           <format>uint</format>
           <unit>ft</unit>
           <scale>6.25</scale>
-          <desc>Estimated accuracy (i.e. standard deviation) of the calculated geometric altitude of a target.<br/>
+          <desc>Estimated accuracy (i.e. standard deviation) of the calculated geometric altitude of a target.<br />
         (LSB) = 1/4 FL</desc>
         </field>
-        <desc><b>Note</b><br/>
+        <desc>
+          <b>Note</b>
+          <br />
       Maximum value means maximum value or above.
       </desc>
       </subfield>
@@ -2413,10 +2483,12 @@
           <format>uint</format>
           <unit>FL</unit>
           <scale>1/4</scale>
-          <desc>Estimated accuracy (i.e. standard deviation) of the calculated barometric altitude of a target.<br/>
+          <desc>Estimated accuracy (i.e. standard deviation) of the calculated barometric altitude of a target.<br />
         (LSB) = 0.25m/s</desc>
         </field>
-        <desc><b>Note</b><br/>
+        <desc>
+          <b>Note</b>
+          <br />
       Maximum value means maximum value or above.
       </desc>
       </subfield>
@@ -2436,7 +2508,9 @@
           <scale>0.25</scale>
           <desc>LSB = 0.25m/s</desc>
         </field>
-        <desc><b>Note</b><br/>
+        <desc>
+          <b>Note</b>
+          <br />
        Maximum value means maximum value or above.
       </desc>
       </subfield>
@@ -2456,7 +2530,9 @@
           <scale>0.25</scale>
           <desc>(LSB) = 0.25m/s^2</desc>
         </field>
-        <desc><b>Note</b><br/>
+        <desc>
+          <b>Note</b>
+          <br />
        Maximum value means maximum value or above.
       </desc>
       </subfield>
@@ -2467,10 +2543,12 @@
           <format>uint</format>
           <unit>ft/min</unit>
           <scale>6.25</scale>
-          <desc>Estimated accuracy (i.e. standard deviation) of the calculated rate of Climb/Descent of an aircraft.<br/>
+          <desc>Estimated accuracy (i.e. standard deviation) of the calculated rate of Climb/Descent of an aircraft.<br />
         (LSB) = 6.25 feet/minute</desc>
         </field>
-        <desc><b>Note</b><br/>
+        <desc>
+          <b>Note</b>
+          <br />
        Maximum value means maximum value or above.
       </desc>
       </subfield>
@@ -2490,7 +2568,9 @@
       <field octed="2" msb="16" lsb="2">
         <name>System Track Number</name>
       </field>
-      <desc><b>Note</b><br/>
+      <desc>
+        <b>Note</b>
+        <br />
        The composed track number is used by co-operating units to
        uniquely identify a track. It consists of the unit identifier and system
        track number for each unit involved in the co-operation. The first unit

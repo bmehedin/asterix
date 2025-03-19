@@ -42,6 +42,7 @@ public class AsterixExcelDataBuilderService {
             int rowCounter = 1;
 
             for (FlightData flightData : asterixFlightData.getFlightDataSet()) {
+
                 for (int position = 0; position < nbOfPositions; position++) {
                     XSSFRow row = sheet.createRow(rowCounter++);
                     fillRowWithFlightData(row, flightData, position);

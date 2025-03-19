@@ -20,6 +20,7 @@ export class AsterixField {
   static readonly CALCULATED_TRACK_VELOCITY = new AsterixField("I062/185", "Calculated Track Velocity", false);
   static readonly CALCULATED_RATE_OF_CLIMB_DESCENT = new AsterixField("I062/220", "Calculated Rate of Climb/Descent", false);
 
+  static readonly BAROMETRIC_PRESSURE_SETTING = new AsterixField("I062/380-28", "Barometric Pressure Setting", false)
   static readonly FLIGHT_CATEGORY = new AsterixField("I062/390-4", "Flight Category", false);
   static readonly WAKE_TURBULENCE_CATEGORY = new AsterixField("I062/390-6", "Wake Turbulence Category", false);
 
@@ -35,6 +36,7 @@ export class AsterixField {
       this.MEASURED_FLIGHT_LEVEL,
       this.CALCULATED_TRACK_VELOCITY,
       this.CALCULATED_RATE_OF_CLIMB_DESCENT,
+      this.BAROMETRIC_PRESSURE_SETTING,
       this.FLIGHT_CATEGORY,
       this.WAKE_TURBULENCE_CATEGORY
     ];

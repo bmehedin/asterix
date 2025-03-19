@@ -13,6 +13,7 @@ public class Constants {
     public static final String BINARY_CATEGORY_STRING = "00111110";
     public static final String BASE_FRN_STRING = "00000001000000010000000100000000";
 //                                                01234567
+    public static final String BASE_380_FRN_STRING = "00000001000000010000000100000010";
     public static final String ASTERIX_DATA_FILE = "/data/cat62.xml";
     public static final String ASTERIX_EXCEL_FILE_PATH = "/data/output/asterix/asterix-data.xlsx";
     public static final String ASTERIX_RAW_FILE_PATH = "/data/output/asterix/asterix-data.raw";

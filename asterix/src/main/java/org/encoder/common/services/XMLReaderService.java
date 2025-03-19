@@ -68,7 +68,9 @@ public class XMLReaderService {
                     String subfieldName = element.getElementsByTagName("name").item(0).getTextContent();
                     String subfieldFormat = element.getAttribute("format");
 
-                    if (null != parentId) {
+                    if (parentId != null &&
+                            asterixFlightData.getParentChildLinkMap().containsKey(parentId) &&
+                            asterixFlightData.getParentChildLinkMap().get(parentId).contains(String.valueOf(subfieldFrn))) {
 
                         asterixFlightData.addAsterixSubfield(parentId, subfieldFrn, subfieldLength, subfieldName, subfieldFormat);
                     }
